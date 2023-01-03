@@ -19,7 +19,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <SEO />
 
       <style jsx global>{`
-        body {
+        * {
           font-family: ${nunitoSans.style.fontFamily};
         }
       `}</style>
