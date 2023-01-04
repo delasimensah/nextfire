@@ -2,7 +2,7 @@ import type { AppProps } from "next/app";
 import { Nunito_Sans } from "@next/font/google";
 import { MantineProvider } from "@mantine/core";
 
-import { SEO } from "../components";
+import { SEO, Navbar } from "../components";
 
 import "../styles/globals.css";
 
@@ -30,9 +30,9 @@ const App = ({ Component, pageProps }: AppProps) => {
           headings: { fontFamily: `${nunitoSans.style.fontFamily}` },
         }}
       >
-        <main>
-          <Component {...pageProps} />
-        </main>
+        <Navbar />
+
+        <Component {...pageProps} />
       </MantineProvider>
     </>
   );
