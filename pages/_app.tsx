@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { Nunito_Sans } from "@next/font/google";
 import { MantineProvider } from "@mantine/core";
+import { NotificationsProvider } from "@mantine/notifications";
 
 import { SEO, Navbar } from "../components";
 
@@ -30,9 +31,11 @@ const App = ({ Component, pageProps }: AppProps) => {
           headings: { fontFamily: `${nunitoSans.style.fontFamily}` },
         }}
       >
-        <Navbar />
+        <NotificationsProvider position="top-center">
+          <Navbar />
 
-        <Component {...pageProps} />
+          <Component {...pageProps} />
+        </NotificationsProvider>
       </MantineProvider>
     </>
   );
