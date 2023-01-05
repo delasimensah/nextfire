@@ -4,7 +4,6 @@ import { useAuth } from "@lib/hooks";
 import { db } from "@lib/firebase";
 import { TextInput, Button } from "@mantine/core";
 import { useDebouncedValue } from "@mantine/hooks";
-import { LogoutButton } from "@components";
 
 const UsernameForm = () => {
   const [formValue, setFormValue] = useState("");
@@ -94,8 +93,6 @@ const UsernameForm = () => {
             <Button type="submit" className="text-white bg-customGreen ">
               Choose
             </Button>
-
-            <LogoutButton />
           </form>
         </section>
       )}

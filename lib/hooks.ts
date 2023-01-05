@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { AuthContext } from "./contexts/authContextProvider";
-import { AuthUserOrNull } from "./customTypes";
+import { AuthContext } from "@lib/contexts/authContextProvider";
+import { AuthUserOrNull } from "@lib/customTypes";
 import { auth, db } from "@lib/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 
@@ -25,9 +25,7 @@ export const useUserData = () => {
       photoUrl: user?.photoURL as string,
     });
 
-    const ref = doc(db, "users", `${user?.uid}`);
-
-    const unsub = onSnapshot(ref, (doc) => {
+    const unsub = onSnapshot(doc(db, "users", `${user?.uid}`), (doc) => {
       setUsername(doc.data()?.username);
     });
 

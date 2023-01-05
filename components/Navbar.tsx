@@ -12,15 +12,13 @@ const Navbar = () => {
 
   return (
     <nav className="flex h-[70px] w-full bg-white fixed top-0 font-bold border-b border-b-customGray z-[99]py-0 px-[10vw]">
-      <ul className="flex items-center justify-between w-full h-full p-0 m-0 list-none">
-        <li className={`${listItem}`}>
-          <Link href="/" passHref>
-            <Button className="text-white uppercase bg-text">NXT</Button>
-          </Link>
-        </li>
+      <div className="flex items-center justify-between w-full h-full p-0 m-0 list-none">
+        <Link href="/" passHref>
+          <Button className="text-white uppercase bg-text">NXT</Button>
+        </Link>
 
         {username && (
-          <>
+          <ul className="flex items-center space-x-1 list-none">
             <li className={`${listItem} ml-auto`}>
               <LogoutButton />
             </li>
@@ -36,7 +34,7 @@ const Navbar = () => {
                 <Avatar src={user?.photoUrl || "/hacker.png"} radius="xl" />
               </Link>
             </li>
-          </>
+          </ul>
         )}
 
         {!username && (
@@ -46,7 +44,7 @@ const Navbar = () => {
             </Link>
           </li>
         )}
-      </ul>
+      </div>
     </nav>
   );
 };
