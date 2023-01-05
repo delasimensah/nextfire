@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import { useAuth } from "@lib/contexts/authContextProvider";
 
 import { Button, Avatar } from "@mantine/core";
 
 const Navbar = () => {
-  let user = null;
-  let username = null;
+  const { user, username } = useAuth();
 
   const listItem = "";
 

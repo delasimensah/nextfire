@@ -2,10 +2,12 @@ import type { AppProps } from "next/app";
 import { Nunito_Sans } from "@next/font/google";
 import { MantineProvider } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
+import AuthProvider from "@lib/contexts/authContextProvider";
+import { DefaultSeo } from "next-seo";
 
-import { SEO, Navbar } from "../components";
+import { Navbar } from "@components";
 
-import "../styles/globals.css";
+import "@styles";
 
 const nunitoSans = Nunito_Sans({
   weight: ["200", "300", "400", "600", "700"],
@@ -16,28 +18,31 @@ const nunitoSans = Nunito_Sans({
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
-      <SEO />
+    <MantineProvider
+      theme={{
+        fontFamily: `${nunitoSans.style.fontFamily}`,
+        headings: { fontFamily: `${nunitoSans.style.fontFamily}` },
+      }}
+    >
+      <NotificationsProvider position="top-center">
+        <AuthProvider>
+          <DefaultSeo
+            title="Next Fire"
+            description="App build with Next.js and Firebase"
+          />
 
-      <style jsx global>{`
-        * {
-          font-family: ${nunitoSans.style.fontFamily};
-        }
-      `}</style>
+          <style jsx global>{`
+            * {
+              font-family: ${nunitoSans.style.fontFamily};
+            }
+          `}</style>
 
-      <MantineProvider
-        theme={{
-          fontFamily: `${nunitoSans.style.fontFamily}`,
-          headings: { fontFamily: `${nunitoSans.style.fontFamily}` },
-        }}
-      >
-        <NotificationsProvider position="top-center">
           <Navbar />
 
           <Component {...pageProps} />
-        </NotificationsProvider>
-      </MantineProvider>
-    </>
+        </AuthProvider>
+      </NotificationsProvider>
+    </MantineProvider>
   );
 };
 
