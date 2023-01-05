@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { useAuth } from "@lib/contexts/authContextProvider";
+import { useAuth } from "@lib/hooks";
 
 import { Button, Avatar } from "@mantine/core";
 

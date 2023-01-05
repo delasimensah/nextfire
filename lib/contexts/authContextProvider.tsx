@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useContext } from "react";
+import { createContext, FC, ReactNode } from "react";
 import { AuthUserOrNull } from "../customTypes";
 import { useUserData } from "../hooks";
 
@@ -11,9 +11,7 @@ type AuthContextType = {
   username: string;
 };
 
-const AuthContext = createContext({} as AuthContextType);
-
-export const useAuth = () => useContext(AuthContext);
+export const AuthContext = createContext({} as AuthContextType);
 
 const AuthContextProvider: FC<AuthProviderProps> = ({ children }) => {
   const { user, username } = useUserData();

@@ -1,7 +1,12 @@
-import React from "react";
+import { useAuth } from "@lib/hooks";
+import { GoogleButton, UsernameForm } from "@components";
 
 const LoginPage = () => {
-  return <div>login</div>;
+  const { user, username } = useAuth();
+
+  return (
+    <main>{user ? !username ? <UsernameForm /> : null : <GoogleButton />}</main>
+  );
 };
 
 export default LoginPage;
