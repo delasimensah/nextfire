@@ -4,6 +4,7 @@ import { MantineProvider } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
 import AuthProvider from "@lib/contexts/authContextProvider";
 import { DefaultSeo } from "next-seo";
+import getTheme from "@lib/mantineTheme";
 
 import { Navbar } from "@components";
 
@@ -17,13 +18,10 @@ const nunitoSans = Nunito_Sans({
 });
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const theme = getTheme(nunitoSans.style.fontFamily);
+
   return (
-    <MantineProvider
-      theme={{
-        fontFamily: `${nunitoSans.style.fontFamily}`,
-        headings: { fontFamily: `${nunitoSans.style.fontFamily}` },
-      }}
-    >
+    <MantineProvider theme={theme}>
       <NotificationsProvider position="top-center">
         <AuthProvider>
           <DefaultSeo
