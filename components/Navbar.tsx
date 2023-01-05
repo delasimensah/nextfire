@@ -34,7 +34,7 @@ const Navbar = () => {
 
             <li>
               <Link href={`/${username}`} passHref>
-                <Avatar src="/hacker.png" radius="xl" />
+                <Avatar src={user?.photoURL || "/hacker.png"} radius="xl" />
               </Link>
             </li>
           </>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button } from "@mantine/core";
 import { auth, googleProvider } from "@lib/firebase";
 import { signInWithPopup } from "firebase/auth";
+// import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
 
 const GoogleButton = () => {
   const loginWithGoogle = async () => {
