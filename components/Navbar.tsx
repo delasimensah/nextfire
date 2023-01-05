@@ -14,9 +14,7 @@ const Navbar = () => {
       <ul className="flex items-center justify-between w-full h-full p-0 m-0 list-none">
         <li className={`${listItem}`}>
           <Link href="/" passHref>
-            <Button className="px-4 py-2 text-white uppercase bg-text roun">
-              NXT
-            </Button>
+            <Button className="text-white uppercase bg-text">NXT</Button>
           </Link>
         </li>
 
@@ -30,7 +28,7 @@ const Navbar = () => {
 
             <li className={`${listItem}`}>
               <Link href="/admin" passHref>
-                <Button className="bg-customBlue">Write Post</Button>
+                <Button className="text-white bg-customBlue">Write Post</Button>
               </Link>
             </li>
 

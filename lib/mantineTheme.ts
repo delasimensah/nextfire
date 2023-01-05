@@ -11,6 +11,7 @@ const getTheme = (fontFamily: string): MantineThemeOverride => {
     components: {
       Button: {
         defaultProps: ButtonDefaultProps,
+        classNames: { root: "font-bold" },
       },
     },
   };
