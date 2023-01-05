@@ -13,7 +13,11 @@ export const useUserData = () => {
   const [authUser, setAuthUser] = useState<AuthUserOrNull>(null);
 
   useEffect(() => {
-    if (!user) setUsername("");
+    if (!user) {
+      setUsername("");
+      setAuthUser(null);
+      return;
+    }
 
     setAuthUser({
       uid: user?.uid as string,

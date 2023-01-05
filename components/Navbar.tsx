@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useAuth } from "@lib/hooks";
 
 import { Button, Avatar } from "@mantine/core";
+import { LogoutButton } from "@components";
 
 const Navbar = () => {
   const { user, username } = useAuth();
@@ -21,9 +22,7 @@ const Navbar = () => {
         {username && (
           <>
             <li className={`${listItem} ml-auto`}>
-              <Button className="bg-customGray text-text" onClick={() => {}}>
-                Logout
-              </Button>
+              <LogoutButton />
             </li>
 
             <li className={`${listItem}`}>
@@ -34,7 +33,7 @@ const Navbar = () => {
 
             <li>
               <Link href={`/${username}`} passHref>
-                <Avatar src={user?.photoURL || "/hacker.png"} radius="xl" />
+                <Avatar src={user?.photoUrl || "/hacker.png"} radius="xl" />
               </Link>
             </li>
           </>
