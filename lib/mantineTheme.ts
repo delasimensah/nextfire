@@ -1,8 +1,4 @@
-import { MantineThemeOverride, ButtonProps } from "@mantine/core";
-
-const ButtonDefaultProps: Partial<ButtonProps> = {
-  size: "lg",
-};
+import { MantineThemeOverride } from "@mantine/core";
 
 const getTheme = (fontFamily: string): MantineThemeOverride => {
   return {
@@ -10,7 +6,6 @@ const getTheme = (fontFamily: string): MantineThemeOverride => {
     headings: { fontFamily },
     components: {
       Button: {
-        // defaultProps: ButtonDefaultProps,
         classNames: { root: "font-bold" },
       },
     },

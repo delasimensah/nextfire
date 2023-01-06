@@ -9,15 +9,17 @@ type AuthProviderProps = {
 type AuthContextType = {
   user: AuthUserOrNull;
   username: string;
+  loading?: boolean;
+  loadingUsername?: boolean;
 };
 
 export const AuthContext = createContext({} as AuthContextType);
 
 const AuthContextProvider: FC<AuthProviderProps> = ({ children }) => {
-  const { user, username } = useUserData();
+  const { user, username, loading, loadingUsername } = useUserData();
 
   return (
-    <AuthContext.Provider value={{ user, username }}>
+    <AuthContext.Provider value={{ user, username, loading, loadingUsername }}>
       {children}
     </AuthContext.Provider>
   );

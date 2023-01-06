@@ -8,9 +8,14 @@ import { doc, onSnapshot } from "firebase/firestore";
 export const useAuth = () => useContext(AuthContext);
 
 export const useUserData = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth);
   const [username, setUsername] = useState("");
   const [authUser, setAuthUser] = useState<AuthUserOrNull>(null);
+  const [loadingUsername, setLoadingUsername] = useState(false);
+
+  if (error) {
+    console.log(error);
+  }
 
   useEffect(() => {
     if (!user) {
@@ -19,18 +24,23 @@ export const useUserData = () => {
       return;
     }
 
+    const usernameDocRef = doc(db, "users", `${user.uid}`);
+
     setAuthUser({
-      uid: user?.uid as string,
-      email: user?.email as string,
-      photoUrl: user?.photoURL as string,
+      uid: user.uid,
+      email: user.email,
+      photoUrl: user.photoURL,
     });
 
-    const unsub = onSnapshot(doc(db, "users", `${user?.uid}`), (doc) => {
+    setLoadingUsername(true);
+
+    const unsub = onSnapshot(usernameDocRef, (doc) => {
       setUsername(doc.data()?.username);
+      setLoadingUsername(false);
     });
 
     return unsub;
   }, [user]);
 
-  return { user: authUser, username };
+  return { user: authUser, username, loading, loadingUsername };
 };

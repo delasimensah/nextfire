@@ -54,7 +54,11 @@ const UsernameForm = () => {
 
     const batch = writeBatch(db);
 
-    batch.set(userDocRef, { username: formValue, photoUrl: user?.photoUrl });
+    batch.set(userDocRef, {
+      uid: user?.uid,
+      username: formValue,
+      photoUrl: user?.photoUrl,
+    });
     batch.set(usernameDocRef, { uid: user?.uid });
 
     await batch.commit();
@@ -64,7 +68,6 @@ const UsernameForm = () => {
     if (username.length >= 3) {
       const docRef = doc(db, "usernames", username);
       const docSnap = await getDoc(docRef);
-      console.log(!docSnap.exists());
       setIsValid(!docSnap.exists());
       setChecking(false);
     }

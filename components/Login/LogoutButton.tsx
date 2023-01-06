@@ -6,12 +6,8 @@ import { Button } from "@mantine/core";
 const LogoutButton = () => {
   const [signOut] = useSignOut(auth);
 
-  const handleLogout = async () => {
-    await signOut();
-  };
-
   return (
-    <Button className="bg-customGray text-text" onClick={handleLogout}>
+    <Button className="bg-customGray text-text" onClick={() => signOut()}>
       Logout
     </Button>
   );

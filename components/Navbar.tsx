@@ -6,7 +6,7 @@ import { Button, Avatar } from "@mantine/core";
 import { LogoutButton } from "@components";
 
 const Navbar = () => {
-  const { user, username } = useAuth();
+  const { user, username, loading } = useAuth();
 
   const listItem = "";
 
@@ -17,8 +17,8 @@ const Navbar = () => {
           <Button className="text-white uppercase bg-text">NXT</Button>
         </Link>
 
-        {username && (
-          <ul className="flex items-center space-x-1 list-none">
+        {user && username && (
+          <ul className="flex items-center space-x-2 list-none">
             <li className={`${listItem} ml-auto`}>
               <LogoutButton />
             </li>
@@ -31,13 +31,13 @@ const Navbar = () => {
 
             <li>
               <Link href={`/${username}`} passHref>
-                <Avatar src={user?.photoUrl || "/hacker.png"} radius="xl" />
+                <Avatar src={user.photoUrl || "/hacker.png"} radius="xl" />
               </Link>
             </li>
           </ul>
         )}
 
-        {!username && (
+        {!user && !username && !loading && (
           <li className={`${listItem}`}>
             <Link href="/login" passHref>
               <Button className="text-white bg-customBlue">Login</Button>
